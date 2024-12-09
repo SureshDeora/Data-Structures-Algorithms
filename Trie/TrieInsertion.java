@@ -36,7 +36,7 @@ public class TrieInsertion {
                 }
                 curr = curr.children[idx];
             }
-            return curr.isEndofWord == true;
+            return curr.isEndofWord;
         }
     
     public static void main(String args[]) {
@@ -44,7 +44,7 @@ public class TrieInsertion {
         for (int i = 0; i < arr.length; i++) {
             insert(arr[i]);
         }
-        String key = "air";
+        String key = "aim";
         System.out.println(search(key));
     }
 }
