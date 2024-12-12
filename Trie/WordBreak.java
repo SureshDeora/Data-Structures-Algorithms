@@ -45,6 +45,7 @@ public class WordBreak {
         return curr.endOfWord;
     }
 
+    // O(L) length of the string
     public static boolean wordBreak(String key) {
         if(key.length() == 0) {
             return true;
