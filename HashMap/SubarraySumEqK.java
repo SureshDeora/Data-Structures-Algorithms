@@ -19,6 +19,6 @@ public class SubarraySumEqK {
                 hm.put(sum, hm.getOrDefault(sum, 0)+1);
             
         }
-        System.out.println(count);
+        System.out.println(count); // ans 2 -> {1,2}, {3}
     }
 }

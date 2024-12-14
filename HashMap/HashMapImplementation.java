@@ -19,7 +19,7 @@ public class HashMapImplementation {
         private int n; // size of nodes ll.size()
         private int N; // size of buckets buckets.length;
 
-        @SuppressWarnings("Unchecked") // to suppress warnings for Linkedlist
+        @SuppressWarnings("unchecked") // to suppress warnings for Linkedlist in compile time
         public HashMap() {
             this.N = 4;
             this.buckets = new LinkedList[N];
@@ -53,7 +53,7 @@ public class HashMapImplementation {
             return -1; // if key is not present
         }
 
-        @SuppressWarnings("Unchecked")
+        @SuppressWarnings("unchecked")
         private void rehash() {
             // coping whole buckets to prevent from loosing
             LinkedList<Node> oldBuckets[] = buckets;
