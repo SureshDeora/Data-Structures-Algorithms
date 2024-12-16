@@ -75,7 +75,7 @@ public class HasPath {
          *             \       | /
          *              2 ---- 4
          * 
-         * Output 
+         * 
          */
         int V = 7;
         @SuppressWarnings("unchecked")
