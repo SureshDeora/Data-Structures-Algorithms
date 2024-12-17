@@ -66,7 +66,7 @@ public class ConnectedComponents {
 
 
     public static void dfs(ArrayList<Edge>[] graph) {
-        boolean[] isVisited = new boolean[graph.length];
+        boolean[] isVisited = new boolean[graph.length];  
         for(int i=0; i<graph.length; i++) {
             if(!isVisited[i]) {
                 dfsUtil(graph, isVisited, i);
