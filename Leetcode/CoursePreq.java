@@ -2,6 +2,7 @@ package Leetcode;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 class Solution {
     static class Edge {
@@ -62,17 +63,50 @@ class Solution {
         int [] arr = {};
         return arr;
     }
-    
+    public static int[] findOrder2(int numCourses, int[][] prerequisites) {
+
+        int[] ans = new int[numCourses];
+        int idx = 0;
+        
+        @SuppressWarnings("unchecked")
+        ArrayList<Edge>[] graph = new ArrayList[numCourses];
+        createGraph(graph, prerequisites);
+
+        boolean[] isVisited = new boolean[graph.length];
+        Stack<Integer> s = new Stack<>();
+        for(int i=0; i<graph.length; i++) {
+            if(!isVisited[i]) {
+                courseOrder(graph, isVisited, s, i);
+            }
+        }
+        while(!s.isEmpty()) {
+            ans[idx++] = s.pop();
+        }
+        return ans;
+    }
+    private static void courseOrder(ArrayList<Edge>[] graph, boolean[] isVisited, Stack<Integer> s, int curr) {
+        isVisited[curr] = true;
+        for(int i=0; i<graph[curr].size(); i++) {
+            Edge e = graph[curr].get(i);
+            if(!isVisited[e.course]) {
+                courseOrder(graph, isVisited, s, e.course);
+            }
+        }
+        s.push(curr);
+    }
     public static void main(String a[]) {
-        int numCourses = 4;
-        int[][] prerequisitesn = {  {1, 0},
-                                    {2, 0},
-                                    {3, 1},
-                                    {3, 2}    };
+        int numCourses = 1;
+        // int[][] prerequisitesn = {  {1, 0},
+        //                             {2, 0},
+        //                             {3, 1},
+        //                             {3, 2}    };
         // int[][] prerequisitesn = {{1, 0}, {0, 1}}; // cycle 
+        int[][] prerequisitesn = {}; // cycle 
+
         // System.out.print(prerequisitesn.length);
         System.out.println();
-        int[] ans = findOrder(numCourses, prerequisitesn);
+        // int[] ans = findOrder(numCourses, prerequisitesn);
+        int[] ans = findOrder2(numCourses, prerequisitesn);
 
 
 
